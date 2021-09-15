@@ -1,0 +1,250 @@
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+
+
+
+/* CSS */
+
+.br{
+  border : 1px solid red;
+}
+
+body{
+  background-color: black !important;
+}
+
+
+
+
+h1{
+
+
+  text-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.2em red, 0 0 0.2em red, 0 0 0.2em red!important;
+  color: white;
+}
+
+
+/* CSS effet néon */
+
+.neonRougeText{
+  text-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red;
+
+}
+
+.neonRougeText:hover{
+  text-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
+
+}
+
+.neonRougeText:active{
+  text-shadow: 1px 1px 2px green, 0 0 1em green, 0 0 0.3em green, 0 0 0.3em green, 0 0 0.3em green;
+
+}
+
+
+
+
+.neonRouge{
+  box-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red;
+
+}
+
+
+
+.neonRouge:hover{ 
+  
+  background-color: transparent!important;
+  box-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
+
+
+  
+}
+
+.neonRouge:active{ 
+  
+  background-color: transparent!important;
+  box-shadow: 1px 1px 2px green, 0 0 1em green, 0 0 0.3em green, 0 0 0.3em green, 0 0 0.3em green;
+
+}
+
+.btneonRed{
+  box-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red!important;
+
+}
+
+.btneonRed:hover{
+  box-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red, 0 0 0.3em red!important;
+  background-color: black!important;
+  text-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red;
+
+}
+
+
+
+.neonBlue{
+  box-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
+
+}
+
+.neonBlueText{
+  text-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
+  color: white;
+}
+
+
+.hrBlue{
+  border: 1px solid white!important;
+  box-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red  , 0 0 0.3em red , 0 0 0.3em red , 0 0 0.3em red;
+
+}
+
+.btneonBlue{
+  box-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
+
+}
+
+.btneonBlue:hover{
+  box-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue , 0 0 0.3em blue , 0 0 0.3em blue , 0 0 0.3em blue , 0 0 0.3em blue , 0 0 0.3em blue , 0 0 0.3em blue , 0 0 0.3em blue, 0 0 0.3em blue!important;
+  background-color: black!important;
+  text-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
+
+}
+
+.neonGreen{
+  box-shadow: 1px 1px 2px green, 0 0 1em green, 0 0 0.3em green, 0 0 0.3em green, 0 0 0.3em green;
+
+}
+
+
+.neonGreenText{
+  text-shadow: 1px 1px 2px green, 0 0 1em green, 0 0 0.3em green, 0 0 0.3em green, 0 0 0.3em green;
+  color: white;
+}
+
+.neonWhiteText{
+  text-shadow: 1px 1px 2px white, 0 0 1em white;
+
+}
+
+
+
+/* 
+.back{
+  background:url(../public/tatooinecreate.jpg);
+}
+ */
+
+
+
+
+
+/* CSS RechercheRecette */
+/* .swfont{
+  font-family: ;
+} */
+
+
+.cardtext{
+  color: white;
+
+}
+
+.cardbackground{
+  background-color: rgb(43, 43, 43);
+}
+
+
+
+/*CSS Footer*/
+.textSize{
+  font-size:130%;
+}
+
+/* anti décoration */
+a{
+  text-decoration: none!important;
+}
+
+
+
+/* à mettre dans un css Recherche */
+Button{
+  background-color: gray !important;
+  box-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red;
+
+}
+
+
+Button:hover{
+  background-color: rgb(184, 184, 184) !important;
+  box-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
+
+
+}
+
+Button:active{
+  background-color: rgb(184, 184, 184) !important;
+  box-shadow: 1px 1px 2px green, 0 0 1em green, 0 0 0.3em green, 0 0 0.3em green, 0 0 0.3em green;
+
+
+}
+
+input{
+  box-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red;
+
+}
+
+input:hover{
+  box-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
