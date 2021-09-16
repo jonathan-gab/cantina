@@ -45,20 +45,19 @@ function App() {
 
 
 
-      <main>
- <Switch>
-        <Route exact path="/" component={RechercheRecette}/>
-        <Route exact path="/new" component={NouvelleRecette}/>
-        <Route exact path="/recette/:id" component={DetailRecette}/>
-        </Switch>
+        <main>
 
+          <Switch>
+            <Route exact path="/" component={RechercheRecette}/>
+            <Route exact path="/new" component={NouvelleRecette}/>
+            <Route exact path="/recette/:id" component={DetailRecette}/>
+          </Switch>
 
+        </main>
 
-      </main>
-
-      <footer>
-        
-      </footer>
+        <footer>
+          
+        </footer>
 
       </div>
 

@@ -39,7 +39,7 @@ function RechercheRecette() {
                     <Image className="w-100" src="../cantina2.jpg" fluid />
                 </div>
 
-                <div className="col-lg-12 container m-auto"><hr className="hrBlue  my-5"/></div>
+                <div className="col-lg-12 neonRougeFixe  mt-5  container m-auto"><hr className="hrBlue mt-3 "/></div>
                 
                     <div className="my-5 py-5 col-lg-5 m-auto mb-3">
                         <InputGroup className=" col-lg-6 ">
@@ -64,6 +64,8 @@ function RechercheRecette() {
                             </Button>
                         </InputGroup>
                     </div>
+                    <div className="col-lg-12 neonRougeFixe  mt-5  container m-auto"><hr className="hrBlue mt-3 "/></div>
+
 
             </div>
 

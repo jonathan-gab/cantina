@@ -56,7 +56,7 @@ function Header() {
         <Navbar className="fixed-top" bg="none" expand="lg">
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
+                <Navbar.Collapse  id="basic-navbar-nav">
                 <Nav className="me-auto">
 
                     <div className=" row col-lg-12">
