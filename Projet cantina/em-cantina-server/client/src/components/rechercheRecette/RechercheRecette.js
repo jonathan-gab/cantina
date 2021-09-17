@@ -31,13 +31,41 @@ function RechercheRecette() {
 
 
     return (
+
+
         <div className="  col-lg-12  ">
 
             <div className="">
+              
 
-                <div className=" col-lg-12  ">
-                    <Image className="w-100" src="../cantina2.jpg" fluid />
+                <div className=" col-lg-12 position-relative ">
+                  {/* Image d'illustration de la page recherche */}
+                  <div className=" col-lg-12">
+                            <div className=" childone start-50 bottom-0  translate-middle position-absolute   col-lg-12     mouse_scroll">
+
+                              <div className="m-auto mouse">
+                                <div className="wheel"></div>
+                              </div>
+                              <div className="m-auto pt-3">
+                                <span className=" m-auto m_scroll_arrows unu"></span>
+                                <span className=" m-auto m_scroll_arrows doi"></span>
+                                <span className=" m-auto m_scroll_arrows trei"></span>
+                              </div>
+                            </div>
+                      </div>
+                      
+                    <Image className="w-100" src="../cantina2.jpg" fluid  />
+                    
+                   {/* Arrow */}
+                  
+                    
+                    
                 </div>
+
+                  
+
+                    
+                  
 
                 <div className="col-lg-12 neonRougeFixe  mt-5  container m-auto"><hr className="hrBlue mt-3 "/></div>
                 

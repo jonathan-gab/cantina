@@ -53,6 +53,7 @@ function Header() {
         // </div>
 
 
+        //Création de la barre naviguation
         <Navbar className="fixed-top" bg="none" expand="lg">
             <Container>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -60,7 +61,7 @@ function Header() {
                 <Nav className="me-auto">
 
                     <div className=" row col-lg-12">
-
+                            {/* Image principal du site */}
                             <Container className=" py-2 m-auto col-lg-2">
                                 <Image className="neonRouge  my-4 col-sm col-md-1 col-2 col-lg-6" src="../tatooine3.jpg" roundedCircle />
                             </Container>
@@ -72,13 +73,13 @@ function Header() {
                                 <div className=" me-auto  py-lg-5 col-lg-12"> 
                                     <div  className=" me-auto row col-lg-6">
                                         <div  className=" me-auto col-lg-1">
-
-                                                <h1 className="  col-lg-4 ">CANTINA</h1>
+                                            {/* Titre du site */}
+                                                <h1 className=" col-lg-4 ">CANTINA</h1>
                                         </div>
 
                                         <div  className=" m-auto col-lg-4">
-
-                                            <NavLink exact to="/" activeClassName='selected' className="neonRougeText textSize mx-4  decorationnon text-white" >Acceuil</NavLink>
+                                                {/* Boutons dde naviguation */}
+                                            <NavLink exact to="/" activeClassName='selected' className="neonRougeText textSize mx-4  decorationnon text-white" >Accueil</NavLink>
                                             <NavLink exact to="/new" activeClassName='selected' className="neonRougeText textSize decorationnon center text-white" >Création</NavLink>
                                         </div>
                                     </div>
