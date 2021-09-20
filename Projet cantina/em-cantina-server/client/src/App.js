@@ -9,23 +9,13 @@ import RechercheRecette from './components/rechercheRecette/RechercheRecette';
 import NouvelleRecette from './components/nouvelleRecette/NouvelleRecette';
 
 
-import Header from './components/hedear/Header';
+import Header from './components/header/Header';
 import DetailRecette from './components/detailRecette/DetailRecette';
+import ModifierRecette from './components/modifierRecette/ModifierRecette';
+import Error404 from './components/error404/Error404';
 
 function App() {
   
-  // const [recettes,setRecettes]=useState(null);
-
-  // useEffect(()=>{
-  //   fetch('http://localhost:9000/api/recipes')
-  //   .then(res=>res.json())
-  //   .then(recipes=>{
-  //     setRecettes(recipes);
-  //   })
-  // },[]);
-
- 
-
 
   return (
 
@@ -33,15 +23,9 @@ function App() {
     <BrowserRouter>
 
       <div className="App">
-        {/* <h1>list des recettes</h1>
-        {recettes && recettes.map(recette => 
-          <div key={recette.id}>
-          <h1 >{recette.titre}</h1>
-          <p>{recette.description}</p>
-          </div>
-        )} */}
+      
 
-        <header><Header/></header>
+        <Header/>
 
 
 
@@ -51,20 +35,17 @@ function App() {
             <Route exact path="/" component={RechercheRecette}/>
             <Route exact path="/new" component={NouvelleRecette}/>
             <Route exact path="/recette/:id" component={DetailRecette}/>
+            <Route exact path="/edit/:id" component={ModifierRecette}/>
+            <Route component={Error404}/>
+
           </Switch>
 
         </main>
 
-        <footer>
-          
-        </footer>
 
       </div>
 
 
-        {/* Rechercher */}
-        {/* <Route exact path="/recherche" component={Recherche}/> */}
-        {/* /Favoris */}
        
 
 
