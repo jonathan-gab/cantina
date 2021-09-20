@@ -57,10 +57,24 @@ h1{
 
 h4{
 
-
   text-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.2em red, 0 0 0.2em red, 0 0 0.2em red!important;
   color: white;
 }
+
+.h4ObiWan{
+
+  text-shadow: 1px 1px 2px rgb(0, 140, 255), 0 0 1em rgb(0, 140, 255), 0 0 0.2em rgb(0, 140, 255), 0 0 0.2em rgb(0, 140, 255), 0 0 0.2em rgb(0, 140, 255)!important;
+  color: white;
+}
+
+
+.h4Utilisateur{
+  text-shadow: 1px 1px 2px white, 0 0 1em white!important;
+  color: white;
+
+}
+
+
 
 p{
   color: white;
@@ -121,7 +135,7 @@ p{
 
 .btneonRed{
   box-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red!important;
-
+  color: white;
 }
 
 .btneonRed:hover{
@@ -157,7 +171,7 @@ p{
 
 .btneonBlue{
   box-shadow: 1px 1px 2px blue, 0 0 1em blue, 0 0 0.3em blue, 0 0 0.3em blue, 0 0 0.3em blue;
-
+  color: white;
 }
 
 .btneonBlue:hover{
@@ -234,7 +248,7 @@ a{
 
 
 
-/* à mettre dans un css Recherche */
+/*  CSS Recherche */
 Button{
   background-color: gray !important;
   box-shadow: 1px 1px 2px red, 0 0 1em red, 0 0 0.3em red, 0 0 0.3em red, 0 0 0.3em red;
@@ -287,9 +301,8 @@ input:hover{
   height: 100%;
   top: 0;
   left: 0;
-  opacity: 0.7;
+  
   background: none;
-  text-align: left;
 }
 .child2 {
   z-index: 1;
@@ -420,6 +433,8 @@ body {
 }
 
 
+
+
 /* Media queris*/
 
 @-webkit-keyframes mouse-wheel{
@@ -492,6 +507,9 @@ body {
   .childone {
     visibility: hidden;
   }
+
+  
+
 }
 
 /* @media only screen and (min-width: 995px)  {

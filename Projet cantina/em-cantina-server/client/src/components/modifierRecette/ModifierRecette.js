@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button,Image } from "react-bootstrap";
 
 function ModifierRecette() {
   const params = useParams();
@@ -102,7 +102,9 @@ function ModifierRecette() {
   }
   return (
     <div>
-      
+      <div>
+        <Image className="w-100" src="../illustrationAjouterImage.jpg"/>
+      </div>
       {recetteEnvoyee && (
         <Form onChange={handleForm} className="    col-lg-12 m-auto pt-4">
           <div className=" col-lg-11 pt-4 container mt-4">

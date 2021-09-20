@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Image } from "react-bootstrap";
 
-function NouvelleRecette() { //On défini la fonction NouvelleRecette qui comporte un objet contenant les paramètre vide du formulaire.
+function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui comporte un objet contenant les paramètre vide du formulaire.
    const initChamps = {
     titre: "",
     description: "",
@@ -11,7 +11,7 @@ function NouvelleRecette() { //On défini la fonction NouvelleRecette qui compor
     tempsPreparation: 0,
     ingredients: [["", ""]],
     etapes: [""],
-    photo: "",
+    photo: "http://localhost:9000/images/the-organique-naboo.jpg",
   };
   const [recetteEnvoyee, setRecetteEnvoyee] = useState(initChamps); // Constante qui va récupérer ce qu'on écrit dans le formuaire et qui va être envoyé au serveur entant que nouvelle recette.
  
@@ -88,13 +88,14 @@ function NouvelleRecette() { //On défini la fonction NouvelleRecette qui compor
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(recetteEnvoyee),
+      body: JSON.stringify(recetteEnvoyee),//Transforme l'obejt en JSON
     };
-    fetch("http://localhost:9000/api/recipes", options)
+    fetch("http://localhost:9000/api/recipes", options)// On envoi notre requette customisé
       .then((res) => res.json())
       .then(
         (result) => {
           console.log("er", result);//Ici on récupère la réponse du serveur
+          props.history.push("/");
         },
         (error) => {
            setError(error);
@@ -104,13 +105,17 @@ function NouvelleRecette() { //On défini la fonction NouvelleRecette qui compor
   }
   return (
     <div>
-        <Form onChange={handleForm} className="    col-lg-12 m-auto pt-4">
-          <div className=" col-lg-11 pt-4 container br   mt-4">
-            <div className="  py-5 text-center mt-1 pb-2">
-              <h1>Modifier votre recette</h1>
+     
+     <div className="">
+        <Image className=" w-100" src="tatooinecreate.jpg"/>
+      </div>     
+        <Form className="child1 col-lg-12 m-auto mt-5 pt-5" onChange={handleForm}>
+          <div className=" col-lg-11 container pt-3 mt-3">
+            <div className="    py-2 text-center mt-2 mb-3">
+              <h1>Ajoutez votre recette</h1>
             </div>
 
-            <div className=" br m-auto col-lg-10 row">
+            <div className="  m-auto col-lg-10 row">
               <div className="  pb-5  m-auto col-lg-10">
                 <Form>
                   <Form.Group className="" controlId="titre">
@@ -181,69 +186,87 @@ function NouvelleRecette() { //On défini la fonction NouvelleRecette qui compor
                           />
                         </Form.Group>
 
-                        <Form.Group
+                        <Form.Group className=" col-lg-12"
                           className="mb-3"
                           controlId="ingrédient"
                           onChange={(e) => handleForm(e, index, value)}
                         >
-                          <Form.Control
-                            type="text"
-                            placeholder="ingrédient"
-                          />
-                            <Button onClick={() => suppChamps("ingrédient", index)}> 
-                            X
-                          </Button>
+                          <div className=" row col-12 col-lg-12">
+                            <div className=" col-10 col-lg-11">
+                              <Form.Control  
+                                type="text"
+                                placeholder="ingrédient"
+                              />
+                            </div>
+                              <div className="col-2  col-lg-1">
+                                <Button className="btneonRed text-white" variant="none" onClick={() => suppChamps("ingrédient", index)}> 
+                                  X
+                                </Button>
+                              </div>
+
+                              
+                          </div>
                         </Form.Group>
                       </div>
                     ))}
                   </Form.Group>
                   <Button
+                    className="my-2 text-white btneonBlue"
                     onClick={() => ajoutChamps("ingrédient")}// Bouton qui permet d'éxecuter la fonction ajoutChamps ( qui, par concéquent ajoute un champs ingrédient).
-                    variant="primary"
+                    variant="none"
                   >
                     Ajouter des ingrédients
                   </Button>
 
                   <Form.Group className="mb-3 " controlId="étapes">
-                    <Form.Label className="py-2 pt-4 text-white ">
+                    <Form.Label className=" pt-4 text-white ">
                       Etapes
                     </Form.Label>
                     {recetteEnvoyee.etapes.map((value, index) => ( // On parcour le tableau d'ingrédient et on affiche les champs lié aux étapes.
                       <div>
                         <Form.Group
-                          className=""
+                          className="py-4"
                           controlId="etape"
                           onChange={(e) => handleForm(e, index, value)} //Permet de détecter quand l'utilisateur remplit une information par rapport à l'etape et l'index renseigne sur la place de l'étape dans le tableau d'ingrédient
                         >
-                          <Form.Control
-                            type="text"
-                            placeholder="Entrez votre image"
-                          />
-                          {/* Bouton qui va exécuter la fonction suppChamps (qui va donc supprimer un champs étape) */}
-                          <Button onClick={() => suppChamps("étape", index)}> 
-                            X
-                          </Button>
+                          <div className="col-12 col-lg-12 row">
+                            <div className="col-10 col-lg-11">
+                              <Form.Control
+                                type="text"
+                                placeholder="Ajouter une étape"
+                              />
+                            </div>
+                              {/* Bouton qui va exécuter la fonction suppChamps (qui va donc supprimer un champs étape) */}
+                            <div className="col-2 col-lg-1 ">
+                              <Button className="btneonRed text-white" variant="none" onClick={() => suppChamps("étape", index)}> 
+                                X
+                              </Button>
+                            </div>
+
+                          </div>
+
                         </Form.Group>
                       </div>
                     ))}
                     <Button
+                     className=" text-white btneonBlue"
                       onClick={() => ajoutChamps("étape")}//Ajoute au clique un champ étape
-                      variant="primary"
+                      variant="none"
                     >
                       Ajouter des étapes
                     </Button>
                   </Form.Group>
 
-                  <Form.Group className="" controlId="image">
+                  <Form.Group className="pt-4" controlId="image">
                     <Form.Label className="text-white ">Image</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Entrez votre image"
+                      placeholder="Ajouter votre image"
                     />
                   </Form.Group>
-                      
-                  <Button onClick={onValidateForm}>Ajouter</Button> {/*Bouton qui permet d'ajouter une recette à la base de donnée du serveur*/}
-                 
+                  <div className=" my-5">
+                    <Button  className="my-2 text-white btneonBlue" onClick={onValidateForm}>Ajouter la recette</Button> {/*Bouton qui permet d'ajouter une recette à la base de donnée du serveur*/}
+                  </div>
                 </Form>
               </div>
             </div>
