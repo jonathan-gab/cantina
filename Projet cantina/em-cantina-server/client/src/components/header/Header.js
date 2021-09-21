@@ -20,48 +20,45 @@ function Header() {
 
         //Création de la barre de naviguation
         <header className="  ">
-        <Navbar className=" fixed-top" bg="none" expand="lg">
-            <Container>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse  id="basic-navbar-nav">
-                <Nav className="me-auto">
+            <Navbar className=" fixed-top" bg="none" expand="lg">
+                <Container>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse  id="basic-navbar-nav">
+                    <Nav className="me-auto">
 
-                    <div className=" row col-lg-12">
-                            {/* Image principal du site */}
-                            <Container className=" py-2 m-auto col-lg-2">
-                               <a href="/"> <Image  className="neonRouge  my-4 col-sm col-md-1 col-2 col-lg-6" src="../tatooine3.jpg" roundedCircle /></a>
-                            </Container>
+                        <div className=" row col-lg-12">
+                                {/* Image principale du site */}
+                                <Container className=" py-2 m-auto col-lg-2">
+                                <a href="/"> <Image  className="neonRouge  my-4 col-sm col-md-1 col-2 col-lg-6" src="../tatooine3.jpg" roundedCircle /></a>
+                                </Container>
 
-                            
+                                <div className=" col-lg-10"> 
 
-                            <div className=" col-lg-10"> 
-
-                                <div className=" me-auto py-lg-5 col-lg-12"> 
-                                    <div  className=" me-auto row col-lg-6">
-                                        <div  className=" me-auto col-lg-1">
-                                            {/* Titre du site */}
+                                    <div className=" me-auto py-lg-5 col-lg-12"> 
+                                        <div  className=" me-auto row col-lg-6">
+                                            <div  className=" me-auto col-lg-1">
+                                                {/* Titre du site */}
                                                 <h1 className=" col-lg-4 ">CANTINA</h1>
+                                            </div>
+
+                                            <div  className=" m-auto row mx-2 col-lg-6 ">
+                                                {/* Bouton de naviguation */}
+                                                <NavLink exact to="/new" activeClassName='selected' className=" text-center neonRougeText col-6 col-lg-12 textSize  decorationnon m-auto text-white" >Nouvelle recette</NavLink>
+                                            </div>
                                         </div>
 
-                                        <div  className=" m-auto mx-2 col-lg-6 ">
-                                                {/* Boutons dde naviguation */}
-                                            {/* <NavLink exact to="/" activeClassName='selected' className="neonRougeText textSize mx-4  decorationnon text-white" >Accueil</NavLink> */}
-                                            <NavLink exact to="/new" activeClassName='selected' className=" row neonRougeText col-lg-12 textSize mx-4 decorationnon m-auto text-white" >Nouvelle recette</NavLink>
-                                        </div>
                                     </div>
 
                                 </div>
+                                    
 
-                            </div>
-                                
+                        </div>
 
-                    </div>
-
-                </Nav>
-                </Navbar.Collapse>
-            </Container>
+                    </Nav>
+                    </Navbar.Collapse>
+                </Container>
             </Navbar>
-            </header>
+        </header>
 
 
 

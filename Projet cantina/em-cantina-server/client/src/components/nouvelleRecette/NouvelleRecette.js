@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Form, Button, Image } from "react-bootstrap";
 
-function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui comporte un objet contenant les paramètre vide du formulaire.
+function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui comporte un objet contenant les paramètres vide du formulaire.
    const initChamps = {
     titre: "",
     description: "",
@@ -13,28 +13,29 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
     etapes: [""],
     photo: "http://localhost:9000/images/the-organique-naboo.jpg",
   };
-  const [recetteEnvoyee, setRecetteEnvoyee] = useState(initChamps); // Constante qui va récupérer ce qu'on écrit dans le formuaire et qui va être envoyé au serveur entant que nouvelle recette.
+  const [recetteEnvoyee, setRecetteEnvoyee] = useState(initChamps); // Constante qui va récupérer ce qu'on écrit dans le formulaire et qui va être envoyé au serveur en tant que nouvelle recette.
  
 
   const [error, setError] = useState(null);// Constante qui va gérer les erreurs, et les afficher
 
 
 
-  const handleForm = (e, index = null, value = null) => {// Méthode qui va permettre de détecter et gerer toutes les intéractions de l'utilisateur avec le formulaire afin de définir notre objet recette.
-    if (e.target.id == "personnes" || e.target.id == "tempsPreparation") { // Si l'utilisateur remplit les champs personnes et tempsPreparation...
+  const handleForm = (e, index = null, value = null) => {// Méthode qui va permettre de détecter et de gérer toutes les interactions de l'utilisateur avec le formulaire afin de définir notre objet recette.
+    if (e.target.id == "personnes" || e.target.id == "tempsPreparation") {
+      // Si l'utilisateur remplit les champs personnes et tempsPreparation...
       setRecetteEnvoyee({
         ...recetteEnvoyee,
-        [e.target.id]: Number(e.target.value),// ...on transforme la valeur renseigné par l'utilisateur en int
+        [e.target.id]: Number(e.target.value),// ...On transforme la valeur renseignée par l'utilisateur en int
       });
-    } else if (e.target.id == "quantite" && index != null) {// Si l'utilisateur rempli les champs quantite du tableau d'ingrédient...
-      const nouvelleValeur = recetteEnvoyee;//..on crée une constante local (Temporaire)... 
-      nouvelleValeur.ingredients[index][0] = e.target.value;//...on intègre l'information renseigné par l'utilisateur (dans ce cas ci, c'est la quantité de l'ingrédient que l'on cherche à renseigner)...
-      setRecetteEnvoyee({ nouvelleValeur });//...et on met à jour la recette
-    } else if (e.target.id == "ingredient" && index != null) {// Ici le principe est le même mais concerne le champs ingredient
+    } else if (e.target.id == "quantité" && index != null) {// Si l'utilisateur rempli les champs quantité du tableau d'ingrédient...
+      const nouvelleValeur = recetteEnvoyee;//..On crée une constante local (temporaire)... 
+      nouvelleValeur.ingredients[index][0] = e.target.value;//...On intègre l'information renseignée par l'utilisateur (dans ce cas-ci, c'est la quantité de l'ingrédient que l'on cherche à renseigner)...
+      setRecetteEnvoyee({ nouvelleValeur });//...Et on met à jour la recette
+    } else if (e.target.id == "ingrédient" && index != null) {// Ici, le principe est le même, mais concerne le champs ingredient
       const nouvelleValeur = recetteEnvoyee;
       nouvelleValeur.ingredients[index][1] = e.target.value;
       setRecetteEnvoyee({ nouvelleValeur });
-    } else if (e.target.id == "etape" && index != null) {// Ici le principe est le même mais concerne le champs etape
+    } else if (e.target.id == "etape" && index != null) {// Ici, le principe est le même, mais concerne le champs etape
       const nouvelleValeur = recetteEnvoyee;
       nouvelleValeur.etapes[index] = e.target.value;
       setRecetteEnvoyee({ nouvelleValeur });
@@ -51,10 +52,10 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
       const champsIngredient = recetteEnvoyee.ingredients;//...On crée une variable locale (temporaire) qui va stoker notre liste actuelle des ingrédients
       champsIngredient.push(["", ""]);//On ajoute une place dans notre tableau d'ingrédient
       setRecetteEnvoyee({
-        ...recetteEnvoyee,//on modifie notre recette sans impacté les autres variables
-        [recetteEnvoyee.ingredients]: champsIngredient,//on met à jour notre recette avec le nouvel ingrédient ajouté
+        ...recetteEnvoyee,//On modifie notre recette sans impacter les autres variables
+        [recetteEnvoyee.ingredients]: champsIngredient,//On met à jour notre recette avec le nouvel ingrédient ajouté
       });
-    } else if (nomId == "étape") {// Ici le principe est le même mais avec le champs etape
+    } else if (nomId == "étape") {// Ici, le principe est le même, mais avec le champs etape
       const champsEtape = recetteEnvoyee.etapes;
       champsEtape.push("");
       setRecetteEnvoyee({
@@ -66,12 +67,12 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
   const suppChamps = (nomId, i) => {// Permet de supprimer une recette
     if (nomId == "ingrédient") {
       const champsIngredient = recetteEnvoyee.ingredients;
-      champsIngredient.splice(i, 1);// Splice est une méthode pour les tableau qui permet de supprimer un élémentà la place i, le 1 permet de dire que l'on veut enlever seulement un élément.
+      champsIngredient.splice(i, 1);// Splice est une méthode pour les tableaux qui permet de supprimer un élément à la place i. Le 1 permet de dire que l'on veut enlever seulement un élément.
       setRecetteEnvoyee({
         ...recetteEnvoyee,
         [recetteEnvoyee.ingredients]: champsIngredient,
       });
-    } else if (nomId == "étape") {// Ici le principe est le même mais avec le champs etape
+    } else if (nomId == "étape") {// Ici, le principe est le même, mais avec le champs etape
       const champsEtape = recetteEnvoyee.etapes;
       champsEtape.splice(i, 1);
       setRecetteEnvoyee({
@@ -81,25 +82,23 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
     }
   };
 
-  function onValidateForm() {// Cette méthode est utilisé quand un utilisateur valide la création d'une recette, elle permet de l'envoyer au serveur.
-    const options = {// la constante option permet de custommiser notre requette
-      method: "POST",//on spécifit la méthode à employer en l'occurence elle permet d'envoyer (créer) une donnée au serveur.
+  function onValidateForm() {// Cette méthode est utilisée quand un utilisateur valide la création d'une recette, elle permet de l'envoyer au serveur.
+    const options = {// La constante option permet de customiser notre Requête
+      method: "POST",//On spécifie la méthode à employer en l'occurrence, elle permet d'envoyer (créer) une donnée au serveur.
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(recetteEnvoyee),//Transforme l'obejt en JSON
+      body: JSON.stringify(recetteEnvoyee),//Transforme l'objet en JSON
     };
-    fetch("http://localhost:9000/api/recipes", options)// On envoi notre requette customisé
+    fetch("http://localhost:9000/api/recipes", options)// On envoie notre Requête customisé
       .then((res) => res.json())
       .then(
-        (result) => {
-          console.log("er", result);//Ici on récupère la réponse du serveur
+        (result) => {//Ici, on récupère la réponse du serveur
           props.history.push("/");
         },
         (error) => {
-           setError(error);
-           console.log(error);// Ici on récupère une potentiel erreur, si on a une erreur alors c'est ici qu'on la récupère.
+           setError(error);// Ici, on récupère une potentielle erreur, si on a une erreur alors c'est ici qu'on la récupère.
         }
       );
   }
@@ -173,7 +172,7 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
 
                   <Form.Group className="mb-3" controlId="ingrédients">
                     <Form.Label className="text-white ">Ingrédients</Form.Label>
-                    {recetteEnvoyee.ingredients.map((value, index) => (// On parcour le tableau d'ingrédient et on affiche les champs lié aux ingrédients ( et leur nombre).
+                    {recetteEnvoyee.ingredients.map((value, index) => (// On parcourt le tableau d'ingrédient et on affiche les champs liés aux ingrédients (et leur nombre).
                       <div key={index}>
                         <Form.Group
                           className="mb-3"
@@ -212,7 +211,7 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
                   </Form.Group>
                   <Button
                     className="my-2 text-white btneonBlue"
-                    onClick={() => ajoutChamps("ingrédient")}// Bouton qui permet d'éxecuter la fonction ajoutChamps ( qui, par concéquent ajoute un champs ingrédient).
+                    onClick={() => ajoutChamps("ingrédient")}// Bouton qui permet d'exécuter la fonction ajoutChamps ( qui, par conséquent ajoute un champ ingrédient).
                     variant="none"
                   >
                     Ajouter des ingrédients
@@ -222,7 +221,7 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
                     <Form.Label className=" pt-4 text-white ">
                       Etapes
                     </Form.Label>
-                    {recetteEnvoyee.etapes.map((value, index) => ( // On parcour le tableau d'ingrédient et on affiche les champs lié aux étapes.
+                    {recetteEnvoyee.etapes.map((value, index) => ( // On parcourt le tableau d'ingrédient et on affiche les champs liés aux étapes.
                       <div>
                         <Form.Group
                           className="py-4"
@@ -236,7 +235,7 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
                                 placeholder="Ajouter une étape"
                               />
                             </div>
-                              {/* Bouton qui va exécuter la fonction suppChamps (qui va donc supprimer un champs étape) */}
+                              {/* Bouton qui va exécuter la fonction suppChamps (qui va donc supprimer un champ étape) */}
                             <div className="col-2 col-lg-1 ">
                               <Button className="btneonRed text-white" variant="none" onClick={() => suppChamps("étape", index)}> 
                                 X
@@ -250,22 +249,18 @@ function NouvelleRecette(props) { //On défini la fonction NouvelleRecette qui c
                     ))}
                     <Button
                      className=" text-white btneonBlue"
-                      onClick={() => ajoutChamps("étape")}//Ajoute au clique un champ étape
+                      onClick={() => ajoutChamps("étape")}//Ajoute, au clique un champ étape
                       variant="none"
                     >
                       Ajouter des étapes
                     </Button>
                   </Form.Group>
-
-                  <Form.Group className="pt-4" controlId="image">
-                    <Form.Label className="text-white ">Image</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Ajouter votre image"
-                    />
-                  </Form.Group>
+                    <Form.Group className="mb-3 text-white pt-3" controlId="photo">
+                      <Form.Label>Image</Form.Label>
+                      <Form.Control type="text" />
+                    </Form.Group>
                   <div className=" my-5">
-                    <Button  className="my-2 text-white btneonBlue" onClick={onValidateForm}>Ajouter la recette</Button> {/*Bouton qui permet d'ajouter une recette à la base de donnée du serveur*/}
+                    <Button  className="my-2 text-white btneonBlue" onClick={onValidateForm}>Ajouter la recette</Button> {/*Bouton qui permet d'ajouter une recette à la base de données du serveur*/}
                   </div>
                 </Form>
               </div>

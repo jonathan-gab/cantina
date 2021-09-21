@@ -4,6 +4,8 @@ import { Form, Col, Row } from "react-bootstrap";
 function FiltreRecette(props) {
     const handleFormFilter=props.handleFormFilter;
   return (
+
+    //Mise en page du formulaire de filtre
     <div className="col-lg-12 ">
       <Form className="    col-lg-12  " onChange={handleFormFilter}>
         <div className=" col-lg-12 mb-3 mt-4">
@@ -36,12 +38,12 @@ function FiltreRecette(props) {
                   <Row>
                     <Col>
                       <Form.Group className="mb-3" controlId="nbPersonnesMin">
-                        <Form.Control type="number" placeholder="First name" />
+                        <Form.Control type="number" placeholder="Nombre de personnes minimum" />
                       </Form.Group>
                     </Col>
                     <Col>
                       <Form.Group className="mb-3" controlId="nbPersonnesMax">
-                        <Form.Control type="number" placeholder="First name" />
+                        <Form.Control type="number" placeholder="Nombre de personnes maximum" />
                       </Form.Group>
                     </Col>
                   </Row>

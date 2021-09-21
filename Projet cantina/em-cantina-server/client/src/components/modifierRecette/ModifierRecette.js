@@ -11,7 +11,6 @@ function ModifierRecette() {
     fetch(`http://localhost:9000/api/recipe/${id}`)
       .then((res) => res.json())
       .then((recipes) => {
-          console.log(recipes);
         setRecetteEnvoyee(recipes);
       });
   }, []);
@@ -23,7 +22,6 @@ function ModifierRecette() {
         [e.target.id]: Number(e.target.value),
       });
     } else if (e.target.id == "quantité" && index != null) {
-      console.log("1");
       const nouvelleValeur = recetteEnvoyee;
       nouvelleValeur.ingredients[index][0] = e.target.value;
       setRecetteEnvoyee({ nouvelleValeur });
@@ -48,10 +46,10 @@ function ModifierRecette() {
       const champsIngredient = recetteEnvoyee.ingredients;//...On crée une variable locale (temporaire) qui va stoker notre liste actuelle des ingrédients
       champsIngredient.push(["", ""]);//On ajoute une place dans notre tableau d'ingrédient
       setRecetteEnvoyee({
-        ...recetteEnvoyee,//on modifie notre recette sans impacté les autres variables
-        [recetteEnvoyee.ingredients]: champsIngredient,//on met à jour notre recette avec le nouvel ingrédient ajouté
+        ...recetteEnvoyee,//On modifie notre recette sans impacter les autres variables
+        [recetteEnvoyee.ingredients]: champsIngredient,//On met à jour notre recette avec le nouvel ingrédient ajouté
       });
-    } else if (nomId == "étape") {// Ici le principe est le même mais avec le champs etape
+    } else if (nomId == "étape") {// Ici, le principe est le même, mais avec le champs etape
       const champsEtape = recetteEnvoyee.etapes;
       champsEtape.push("");
       setRecetteEnvoyee({
@@ -63,12 +61,12 @@ function ModifierRecette() {
   const suppChamps = (nomId, i) => {// Permet de supprimer une recette
     if (nomId == "ingrédient") {
       const champsIngredient = recetteEnvoyee.ingredients;
-      champsIngredient.splice(i, 1);// Splice est une méthode pour les tableau qui permet de supprimer un élémentà la place i, le 1 permet de dire que l'on veut enlever seulement un élément.
+      champsIngredient.splice(i, 1);// Splice est une méthode pour les tableaux qui permet de supprimer un élément à la place i, le 1 permet de dire que l'on veut enlever seulement un élément.
       setRecetteEnvoyee({
         ...recetteEnvoyee,
         [recetteEnvoyee.ingredients]: champsIngredient,
       });
-    } else if (nomId == "étape") {// Ici le principe est le même mais avec le champs etape
+    } else if (nomId == "étape") {// Ici, le principe est le même, mais avec le champs etape
       const champsEtape = recetteEnvoyee.etapes;
       champsEtape.splice(i, 1);
       setRecetteEnvoyee({
@@ -78,25 +76,23 @@ function ModifierRecette() {
     }
   };
 
-  function onValidateForm() { // Cette méthode est utilisé quand un utilisateur valide la modification d'une recette, elle permet de l'envoyer au serveur.
-    const options = {// la constante option permet de custommiser notre requette
-      method: "PUT",//Avec PUT on modifit une donnée de la base de donnée du serveur
+  function onValidateForm() { // Cette méthode est utilisée quand un utilisateur valide la modification d'une recette, elle permet de l'envoyer au serveur.
+    const options = {// la constante option permet de custommiser notre Requête
+      method: "PUT",//Avec PUT, on modifie une donnée de la base de données du serveur
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(recetteEnvoyee),//Transforme l'obejt en JSON
+      body: JSON.stringify(recetteEnvoyee),//Transforme l'objet en JSON
     };
-    fetch(`http://localhost:9000/api/recipe/${id}`, options)// On envoi notre requette customisé
+    fetch(`http://localhost:9000/api/recipe/${id}`, options)// On envoie notre requête customisé
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log("er", result);
-          setRecetteEnvoyee(result);//Ici on récupère la réponse du serveur
+          setRecetteEnvoyee(result);//Ici, on récupère la réponse du serveur
         },
         (error) => {
-          //  setError(error);
-          //  console.log(error);
+         
         }
       );
   }
@@ -129,7 +125,7 @@ function ModifierRecette() {
                       Description
                     </Form.Label>
                     <Form.Control
-                      value={recetteEnvoyee.description}//Ce champ récupère le description de la recette (qu'on a récupéré via l'API).
+                      value={recetteEnvoyee.description}//Ce champ récupère la description de la recette (qu'on a récupéré via l'API).
                       className="neonRouge"
                       as="textarea"
                       rows={3}
@@ -156,7 +152,7 @@ function ModifierRecette() {
                       Nombre de personne
                     </Form.Label>
                     <Form.Control
-                      value={recetteEnvoyee.personnes}//Ce champ récupère le nombre de personne pour qui la recette peut être préparé (qu'on a récupéré via l'API).
+                      value={recetteEnvoyee.personnes}//Ce champ récupère le nombre de personnes pour qui la recette peut être préparée (qu'on a récupéré via l'API).
                       type="number"
                       placeholder="Entrez pour combien de personne la recette est réalisable"
                     />
@@ -175,7 +171,7 @@ function ModifierRecette() {
 
                   <Form.Group className="mb-3" controlId="ingrédients">
                     <Form.Label className="text-white ">Ingrédients</Form.Label>
-                    {recetteEnvoyee.ingredients.map((value, index) => (// On parcour le tableau d'ingrédient et on affiche les champs lié aux ingrédients ( et leur nombre).
+                    {recetteEnvoyee.ingredients.map((value, index) => (// On parcourt le tableau d'ingrédient et on affiche les champs liés aux ingrédients (et leur nombre).
                       <div key={index}>
                         <Form.Group
                           className="mb-3"
@@ -214,7 +210,7 @@ function ModifierRecette() {
                       </div>
                     ))}
                   </Form.Group>
-                  <Button className="btneonBlue text-white" onClick={() => ajoutChamps("ingrédient")}// Bouton qui permet d'éxecuter la fonction ajoutChamps ( qui, par concéquent ajoute un champs ingrédient).
+                  <Button className="btneonBlue text-white" onClick={() => ajoutChamps("ingrédient")}// Bouton qui permet d'éxecuter la fonction ajoutChamps ( qui, par concéquent ajoute un champ ingrédient).
                    variant="none">
                     Ajouter des ingrédients
                   </Button>
@@ -223,7 +219,7 @@ function ModifierRecette() {
                     <Form.Label className="py-2  mx-3 pt-4 text-white ">
                       Etapes
                     </Form.Label>
-                    {recetteEnvoyee.etapes.map((value, index)=>(// On parcour le tableau d'ingrédient et on affiche les champs lié aux étapes.
+                    {recetteEnvoyee.etapes.map((value, index)=>(// On parcourt le tableau d'ingrédient et on affiche les champs lié aux étapes.
                         <div>
                   <Form.Group className="" controlId="etape" onChange={(e)=>handleForm(e,index,value)}>
                   <div className="col-12 col-lg-12 row">
@@ -240,7 +236,7 @@ function ModifierRecette() {
                     </div>
                     <div className="col-2 col-lg-1 ">
 
-                      <Button className="btneonRed text-white" variant="none" onClick={() => suppChamps("étape", index)}> {/* Bouton qui va exécuter la fonction suppChamps (qui va donc supprimer un champs étape) */}
+                      <Button className="btneonRed text-white" variant="none" onClick={() => suppChamps("étape", index)}> {/* Bouton qui va exécuter la fonction suppChamps (qui va donc supprimer un champ étape) */}
                               X
                       </Button>
                     </div>
@@ -249,25 +245,22 @@ function ModifierRecette() {
                   </Form.Group>
                         </div>
                     ))}
-                    <Button className="btneonBlue text-white my-3" onClick={()=>ajoutChamps("étape")}//Ajoute au clique un champ étape
+                    <Button className="btneonBlue text-white my-3" onClick={()=>ajoutChamps("étape")}//Ajoute, au clique, un champ étape
                       variant="none">Ajouter des étapes
                     </Button>
                     
                   </Form.Group>
 
-                  <Form.Group className="" controlId="image">
+                  <Form.Group className="mb-3" controlId="photo">
                     <Form.Label className="text-white ">Image</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Ajoutez votre image"
-                    />
+                    <Form.Control type="text" />
                   </Form.Group>
 
                   <a href="/">
                     <Button className="btneonBlue text-white my-5" variant="none"
                       onClick={onValidateForm}>Modifier la recette
                     </Button>
-                  </a> {/*Bouton qui permet d'ajouter une recette à la base de donnée du serveur*/}
+                  </a> {/*Bouton qui permet d'ajouter une recette à la base de données du serveur*/}
                 </Form>
               </div>
             </div>
